@@ -414,43 +414,6 @@ void vTask_Sensor_Reading(void const * argument)
   }
 }
 
-/*void vTask_Motor_Control(void const * argument)
-{
-  for(;;)
-  {
-    
-
-    if ((g_d1 < 50) )
-    {
-      Motors_Stop();
-
-
-      //Motors_Backward(350);
-		if (  g_d2 <20 && g_d3 > 20 )
-    {
-    	
-    	
-     Motors_TurnRight(200);
-    }
-		else if ( g_d3 < 20 && g_d2 > 20 )
-    {
-    	
-      
-			Motors_TurnLeft(200);
-			
-
-    }
-		else if (g_d3 < 20 && g_d2 < 20)
-			Motors_TurnLeft(350);
-	}
-		else 
-			Motors_Forward(380);
-			
-     osDelay(200);
-
-    }   
-    
-  }*/
 void vTask_Motor_Control(void const * argument)
 {
     static int stuck_counter = 0; // Stuck detection counter
@@ -542,71 +505,6 @@ void vTask_Motor_Control(void const * argument)
     }
 }
 
-/*void Motor_Control(void)
-{
-   // HAL_TIM_PWM_Start(&htim1, TIM_CHANNEL_1);
-  HAL_TIM_PWM_Start(&htim1, TIM_CHANNEL_2);
-  HAL_TIM_PWM_Start(&htim2, TIM_CHANNEL_1);
-  HAL_TIM_PWM_Start(&htim2, TIM_CHANNEL_2);//
-
-
-
-     g_d2 = US_ReadCM(GPIOA, GPIO_PIN_6, GPIOA, GPIO_PIN_5, 30000);
-     g_d1 = US_ReadCM(GPIOC, GPIO_PIN_5, GPIOC, GPIO_PIN_4, 30000);
-     g_d3 = US_ReadCM(GPIOB, GPIO_PIN_0, GPIOB, GPIO_PIN_1, 30000);
-	   char msg[64];
-    int n = snprintf(msg, sizeof(msg), "D1=%lu cm  D2=%lu cm D3=%lu cm\r\n",
-                     (unsigned long)g_d1, (unsigned long)g_d2,(unsigned long)g_d3);
-    HAL_UART_Transmit(&huart6, (uint8_t*)msg, (uint16_t)n, 100);
-
-    if ((g_d1 < 30) )
-    {
-      Motors_Stop();
-      HAL_Delay(1000); // pause de 1 milliseconde
-
-
-      Motors_Backward(350);
-      HAL_Delay(300); // pause
-			//Motors_Stop();
-			 if (  g_d2 >20 && g_d3 < 20 )
-    {
-    	
-    	
-      Motors_TurnLeft(550);
-			HAL_Delay(300);
-			Motors_Stop();
-			
-    }
-		else if ( g_d3 > 20 && g_d2 < 20 )
-    {
-    	
-      
-			Motors_TurnLeft(500);
-		  HAL_Delay(420);
-			Motors_Stop();
-			 HAL_Delay(420);
-		  
-			
-
-    }
-		else if (g_d3 > 20 && g_d2 > 20){
-			
-		Motors_TurnRight(500);
-			HAL_Delay(420);
-			Motors_Stop();
-		HAL_Delay(420);}
-		
-		
-
-    }
-   
-    
-    else
-    {
-      Motors_Forward(250);
-    }
-
-}*/
 void Motor_Control(void)
 {
     // Read ultrasonic sensors
